@@ -39,8 +39,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'django.contrib.gis',
+
+    # Local apps
+    'accounts.apps.AccountsConfig',
+
+    # 3'rd party apps
     'channels',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -75,6 +84,9 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 ASGI_APPLICATION = "backend.routing.application"
 
 
+SITE_ID = os.environ.get('SITE_ID', 1)
+
+
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
@@ -89,6 +101,7 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
