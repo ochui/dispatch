@@ -71,7 +71,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -104,6 +104,12 @@ DATABASES = {
         'PORT': os.environ.get('DATABASE_PORT'),
     }
 }
+
+# This will all django app on heroku connect to postgres via postgis
+
+if 'DATABASE_URL' in os.environ:  # please help me heroku gods
+    if 'postgres' in os.environ['DATABASE_URL']:
+        os.environ['DATABASE_URL'] = os.environ['DATABASE_URL'].replace('postgres', 'postgis')
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
@@ -156,6 +162,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 GEOS_LIBRARY_PATH = os.environ.get('GEOS_LIBRARY_PATH')
 
