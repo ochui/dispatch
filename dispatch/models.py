@@ -13,7 +13,7 @@ class Cop(models.Model):
 
     cop = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     status = models.CharField(max_length=50, choices=COP_STATUS, default='0')
-    location = models.PointField(null=True, blank=True)
+    point = models.PointField(null=True, blank=True)
     socket_id = models.UUIDField(default=uuid.uuid4, editable=False)
 
     class Meta:

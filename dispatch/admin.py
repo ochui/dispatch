@@ -6,7 +6,7 @@ from dispatch.models import Cop, DispatchLog
 @admin.register(Cop)
 class CopAdmin(OSMGeoAdmin):
 
-    list_display = ['cop', 'status', 'location']
+    list_display = ['cop', 'status', 'point']
     
 
 @admin.register(DispatchLog)
