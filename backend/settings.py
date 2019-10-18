@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     # Local apps
     'accounts.apps.AccountsConfig',
+    'dispatch.apps.DispatchConfig',
 
     # 3'rd party apps
     'channels',
