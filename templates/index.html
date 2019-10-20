@@ -27,16 +27,14 @@
     <script type="text/javascript">
         var map;
         var zoom = 13;
-        
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(initMap);
-            } else {
-                alert("Geolocation is not supported by this browser.");
-            }
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(loadMap);
+        } else {
+            alert("Geolocation is not supported by this browser.");
         }
 
-        function initMap(position) {
+        function loadMap(position){
             console.log(position)
             var eiffel = { lat: 21.0262635, lng: 105.8343434 };
             map = new google.maps.Map(document.getElementById('map'), {
@@ -60,6 +58,7 @@
                 content: contentString
             })
         }
+
     </script>
 </body>
 
