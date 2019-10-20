@@ -36,7 +36,7 @@
 
         function loadMap(position){
             console.log(position)
-            var eiffel = { lat: 21.0262635, lng: 105.8343434 };
+            var eiffel = { lat: position.coords.latitude, lng: position.coords.longitude};
             map = new google.maps.Map(document.getElementById('map'), {
                 center: eiffel,
                 zoom: zoom
