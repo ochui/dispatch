@@ -11,6 +11,9 @@ class CopApiList(ListAPIView):
 
     serializer_class = CopSerializer
     # permission_classes = [IsAuthenticatedOrReadOnly]
+    distance_filter_field = 'point'
+    filter_backends = (DistanceToPointFilter, )
+    bbox_filter_include_overlapping = True # Optional
 
     def get_queryset(self):
         return Cop.objects.all()
@@ -18,13 +21,9 @@ class CopApiList(ListAPIView):
 
 
 class NearbyCopApiList(ListAPIView):
-    serializer_class = CopSerializer
-    permission_classes = [IsAuthenticated]
 
-    def get_queryset(self):
-        return Cop.objects.annotate(
-            distance=Distance(
-                'location', fromstr(
-                    f'POINT({self.kwargs["longitude"]} {self.kwargs["latitude"]})', srid=4326)
-            )
-        ).order_by('distance')[0:10]
+    serializer_class = CopSerializer
+    queryset = Cop.objects.all()
+    distance_filter_field = 'geometry'
+    filter_backends = (DistanceToPointFilter, )
+    bbox_filter_include_overlapping = True # Optional
