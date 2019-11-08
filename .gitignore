@@ -1,7 +1,7 @@
 # File created using '.gitignore Generator' for Visual Studio Code: https://bit.ly/vscode-gig
 
-# Created by https://www.gitignore.io/api/linux,visualstudiocode,django,dotenv,python,redis,venv,virtualenv
-# Edit at https://www.gitignore.io/?templates=linux,visualstudiocode,django,dotenv,python,redis,venv,virtualenv
+# Created by https://www.gitignore.io/api/django,dotenv,linux,python,redis,venv,virtualenv,visualstudiocode,git
+# Edit at https://www.gitignore.io/?templates=django,dotenv,linux,python,redis,venv,virtualenv,visualstudiocode,git
 
 ### Django ###
 *.log
@@ -123,6 +123,21 @@ dmypy.json
 ### dotenv ###
 .env
 
+### Git ###
+# Created by git for backups. To disable backups in Git:
+# $ git config --global mergetool.keepBackup false
+*.orig
+
+# Created by git when using merge tools for conflicts
+*.BACKUP.*
+*.BASE.*
+*.LOCAL.*
+*.REMOTE.*
+*_BACKUP_*.txt
+*_BASE_*.txt
+*_LOCAL_*.txt
+*_REMOTE_*.txt
+
 ### Linux ###
 *~
 
@@ -223,7 +238,7 @@ pip-selfcheck.json
 # Ignore all local history of files
 .history
 
-# End of https://www.gitignore.io/api/linux,visualstudiocode,django,dotenv,python,redis,venv,virtualenv
+# End of https://www.gitignore.io/api/django,dotenv,linux,python,redis,venv,virtualenv,visualstudiocode,git
 
 # Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
 

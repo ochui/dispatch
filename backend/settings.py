@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # Local apps
     'accounts.apps.AccountsConfig',
     'dispatch.apps.DispatchConfig',
+    'ws.apps.WsConfig',
 
     # 3'rd party apps
     'channels',
@@ -122,6 +123,13 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
+
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 
@@ -144,6 +152,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REDIS_DEFAULT_HOST = os.environ.get('REDIS_URL', 'redis://127.0.0.1:6379')
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [REDIS_DEFAULT_HOST],
+        },
+    },
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
