@@ -16,7 +16,7 @@ class CustomUser(AbstractUser):
 
     gender = models.CharField(max_length=50, choices=GENDER)
     date_of_birth = models.DateField(blank=True, null=True)
-    phone_number = models.CharField(max_length=20, unique=True)
+    phone_number = models.CharField(max_length=20)
     address = models.CharField(max_length=255, null=True, blank=True)
     state = models.CharField(max_length=50, null=True, blank=True)
     city = models.CharField(max_length=50, null=True, blank=True)

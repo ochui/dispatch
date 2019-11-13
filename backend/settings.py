@@ -111,7 +111,8 @@ DATABASES = {
 
 if 'DATABASE_URL' in os.environ:  # please help me heroku gods
     if 'postgres' in os.environ['DATABASE_URL']:
-        os.environ['DATABASE_URL'] = os.environ['DATABASE_URL'].replace('postgres', 'postgis')
+        os.environ['DATABASE_URL'] = os.environ['DATABASE_URL'].replace(
+            'postgres', 'postgis')
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
@@ -128,6 +129,10 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     )
+}
+
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'accounts.serializers.CustomRegisterSerializer',
 }
 
 ACCOUNT_USERNAME_REQUIRED = False
