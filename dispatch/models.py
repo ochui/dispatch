@@ -6,9 +6,12 @@ from django.contrib.postgres.fields import JSONField
 
 class Cop(models.Model):
 
+    STATUS_ONLINE = '1'
+    STATUS_OFFLINE = '0'
+
     COP_STATUS = (
-        ('1', 'Online'),
-        ('0', 'Offline')
+        (STATUS_ONLINE, 'Online'),
+        (STATUS_OFFLINE, 'Offline')
     )
 
     cop = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

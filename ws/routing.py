@@ -3,5 +3,6 @@ from django.urls import path
 from . import consumers
 
 websocket_urlpatterns = [
-    path('ws/<room_name>', consumers.ChatConsumer),
+    path('ws', consumers.CopConsumer),
+    path('ws/<socket_id>', consumers.CopConsumer),
 ]
